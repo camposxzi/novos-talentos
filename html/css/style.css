@@ -1,0 +1,831 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #102A43;
+    --primary-light: #243F59;
+    --accent: #18A999;
+    --background: #F3F6FA;
+    --white: #FFFFFF;
+    --text: #243447;
+    --muted: #64748B;
+    --border: #E2E8F0;
+    --radius: 14px;
+    --shadow: 0 8px 28px rgba(16, 42, 67, 0.07);
+}
+
+/* CONFIGURAÇÃO GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button, select {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #18A999;
+    outline-offset: 3px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+/* CABEÇALHO */
+.header {
+    background-color: #0b2a5b;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.navbar {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* LOGOTIPO */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 800;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.logo-icon {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform: translateX(10px);
+}
+
+.logo-icon img {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    padding: 0;
+    display: block;
+}
+
+.logo-highlight {
+    color: #38b6ff;
+}
+
+/* MENU DE NAVEGAÇÃO */
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-links a:not(.button) {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* LINHA ANIMADA */
+.nav-links a:not(.button)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #38b6ff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:not(.button):hover {
+    color: #38b6ff;
+}
+
+.nav-links a:not(.button):hover::after {
+    width: 100%;
+}
+
+/* BOTÃO DE CADASTRO */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #38b6ff;
+    background: transparent;
+    transition: all 400ms ease;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid #38b6ff;
+    text-align: center;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.button:hover {
+    color: #08294f;
+    transform: scale(1.05);
+    outline: 2px solid #70bdca;
+    box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #38b6ff;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 600ms ease;
+}
+
+.button:hover::before {
+    width: 150%;
+}
+
+/* =========================================
+   RODAPÉ - NOVOS TALENTOS
+========================================= */
+
+.footer {
+    width: 100%;
+    margin-top: 0;
+    background: #0b2a5b;
+    color: #ffffff;
+}
+
+.footer-main {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 190px;
+    margin: 0 auto;
+    padding: 35px 40px;
+
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr 1.2fr;
+    gap: 30px;
+    align-items: center;
+}
+
+/* LOGO E SLOGAN */
+.footer-brand {
+    padding-right: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 25px;
+}
+
+.footer-logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.footer-logo strong {
+    color: #38b6ff;
+}
+
+.footer-brand p {
+    margin-left: 60px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* COLUNAS */
+.footer-column {
+    min-height: 105px;
+    padding-left: 22px;
+    border-left: 2px solid #38b6ff;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.footer-column p,
+.footer-column a {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.footer-column ul {
+    padding-left: 15px;
+}
+
+.footer-column li {
+    margin-bottom: 2px;
+}
+
+.footer-column a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #38b6ff;
+}
+
+/* REDES SOCIAIS */
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+/* LINKEDIN */
+.linkedin-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #0b2a5b !important;
+    border-radius: 3px;
+    font-size: 21px !important;
+    font-weight: 800 !important;
+}
+
+/* GITHUB ANIMADO */
+.github-tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.github-tooltip > a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0077b5;
+    color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.github-icon {
+    width: 23px;
+    height: 23px;
+    transition: all 0.3s ease;
+}
+
+.github-tooltip:hover > a {
+    transform: translateY(10px);
+    border-radius: 50%;
+    background: #0077b5;
+    color: #ffffff;
+}
+
+.github-tooltip:hover .github-icon {
+    transform: scale(1.1);
+}
+
+.github-label {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translate(-50%, 8px);
+    opacity: 0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.github-tooltip:hover .github-label {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* =========================================
+   PARTE INFERIOR DO RODAPÉ
+========================================= */
+
+.footer-bottom {
+    width: 100%;
+    min-height: 60px;
+    background: #08244d;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 25px;
+    transform: translateY(25px);
+}
+
+.footer-bottom p {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.footer-bottom p:last-child {
+    text-align: right;
+}
+
+.footer-bottom span {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #0b2a5b !important;
+}
+
+footer.footer {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #0b2a5b !important;
+}
+
+footer.footer .footer-main {
+    background: #0b2a5b !important;
+}
+
+footer.footer .footer-bottom {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 60px !important;
+    padding: 15px 5% !important;
+    background: #08244d !important;
+    color: white !important;
+}
+
+footer.footer .footer-bottom p {
+    color: white !important;
+}
+
+/* REDES SOCIAIS */
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+/* LINKEDIN ANIMADO */
+.linkedin-tooltip {
+    position: relative;
+}
+
+.linkedin-tooltip > a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0077b5;
+    color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.linkedin-svg {
+    width: 22px;
+    height: 22px;
+}
+
+.linkedin-tooltip:hover > a {
+    transform: translateY(10px);
+    border-radius: 50%;
+    background: #005582;
+}
+
+.linkedin-label {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translate(-50%, 8px);
+    opacity: 0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.linkedin-tooltip:hover .linkedin-label {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* BANNER PRINCIPAL */
+.hero {
+    width: 100%;
+    min-height: 540px;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+    padding-top: 65px;
+    padding-bottom: 65px;
+    min-height: 540px;
+}
+
+.hero-text {
+    color: black;
+}
+
+.hero-tag {
+    color: #38b6ff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.hero-text h1 {
+    font-size: clamp(38px, 4.5vw, 58px);
+    line-height: 1.12;
+    font-weight: 800;
+    margin: 22px 0;
+}
+
+.hero-text h1 span {
+    display: block;
+    color: #38b6ff;
+}
+
+.hero-text p {
+    color: black;
+    font-size: 16px;
+    max-width: 470px;
+    margin-bottom: 30px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 14px 24px;
+    background: #38b6ff;
+    color: #08294f;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    background: #ffffff;
+    transform: translateY(-4px);
+}
+
+.hero-image {
+    width: 100%;
+    height: 370px;
+    border-radius: 3px;
+    overflow: hidden;
+    transform: translate(75%, 30%);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-image {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 370px;
+    border-radius: 18px;
+    overflow: visible;
+}
+
+/* EFEITO DECORATIVO ATRÁS DA IMAGEM */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(56, 182, 255, 0.35),
+        rgba(56, 182, 255, 0.08) 55%,
+        transparent 72%
+    );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* IMAGEM DOS ESTUDANTES */
+.hero-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 35px 25px;
+        gap: 30px;
+    }
+
+    .footer-brand {
+        padding-right: 0;
+    }
+
+    .hero-content {
+        gap: 25px;
+    }
+
+    .hero-image {
+        transform: none;
+        height: 320px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES
+========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
+        padding-top: 45px;
+        padding-bottom: 45px;
+        min-height: auto;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+    }
+
+    .hero-image {
+        height: 280px;
+        width: 100%;
+        transform: translate(0%, 20%);
+    }
+
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        padding: 30px 22px;
+    }
+
+    .footer-brand p {
+        margin-left: 0;
+    }
+
+    .footer-column {
+        min-height: auto;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 15px;
+        gap: 8px;
+    }
+
+    .footer-bottom p {
+        text-align: center;
+        font-size: 11px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .logo-icon {
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+    }
+
+    .nav-links {
+        gap: 10px 15px;
+    }
+
+    .nav-links a:not(.button) {
+        font-size: 12px;
+    }
+
+    .hero-text h1 {
+        font-size: 29px;
+    }
+
+    .hero-image {
+        height: 220px;
+    }
+
+    .hero-content {
+        gap: 25px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .footer-bottom p {
+        text-align: center;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - IPAD PRO
+========================================= */
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+    /* CABEÇALHO */
+    .navbar {
+        gap: 18px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a:not(.button) {
+        font-size: 13px;
+    }
+
+    /* BANNER */
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .hero-text h1 {
+        font-size: 44px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .hero-image {
+        height: 340px;
+        transform: translate(15%, 50%);
+    }
+
+    /* RODAPÉ */
+    .footer-main {
+        grid-template-columns: 1.5fr 1fr 0.8fr 1fr;
+        gap: 20px;
+        padding: 35px 25px;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+
+    .footer-column {
+        padding-left: 15px;
+    }
+
+}
+
+/* ESCONDE SEÇÕES QUE AINDA NÃO POSSUEM CONTEÚDO */
+#categorias,
+#vagas,
+#cadastro {
+    display: none;
+}
