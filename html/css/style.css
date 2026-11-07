@@ -15,6 +15,7 @@
 }
 
 /* CONFIGURAÇÃO GERAL */
+
 * {
     margin: 0;
     padding: 0;
@@ -66,6 +67,7 @@ img {
 }
 
 /* CABEÇALHO */
+
 .header {
     background-color: #0b2a5b;
     border-bottom: 1px solid var(--border);
@@ -84,6 +86,7 @@ img {
 }
 
 /* LOGOTIPO */
+
 .logo {
     display: inline-flex;
     align-items: center;
@@ -119,6 +122,7 @@ img {
 }
 
 /* MENU DE NAVEGAÇÃO */
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -137,6 +141,7 @@ img {
 }
 
 /* LINHA ANIMADA */
+
 .nav-links a:not(.button)::after {
     content: "";
     position: absolute;
@@ -157,6 +162,7 @@ img {
 }
 
 /* BOTÃO DE CADASTRO */
+
 .button {
     display: inline-block;
     padding: 12px 20px;
@@ -216,17 +222,18 @@ img {
 .footer-main {
     width: 100%;
     max-width: 1200px;
-    min-height: 190px;
+    min-height: auto;
     margin: 0 auto;
-    padding: 35px 40px;
+    padding: 18px 30px;
 
     display: grid;
     grid-template-columns: 2fr 1.2fr 0.8fr 1.2fr;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
 }
 
 /* LOGO E SLOGAN */
+
 .footer-brand {
     padding-right: 20px;
 }
@@ -235,13 +242,13 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
-    font-size: 25px;
+    margin-bottom: 5px;
+    font-size: 21px;
 }
 
 .footer-logo img {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
 }
 
@@ -250,20 +257,21 @@ img {
 }
 
 .footer-brand p {
-    margin-left: 60px;
-    font-size: 14px;
+    margin-left: 54px;
+    font-size: 12px;
     font-weight: 600;
 }
 
 /* COLUNAS */
+
 .footer-column {
-    min-height: 105px;
-    padding-left: 22px;
+    min-height: auto;
+    padding-left: 18px;
     border-left: 2px solid #38b6ff;
 }
 
 .footer-column h3 {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-size: 15px;
     font-weight: 700;
 }
@@ -294,14 +302,16 @@ img {
 }
 
 /* REDES SOCIAIS */
+
 .social-links {
     display: flex;
     align-items: center;
     gap: 22px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /* LINKEDIN */
+
 .linkedin-icon {
     width: 34px;
     height: 34px;
@@ -316,6 +326,7 @@ img {
 }
 
 /* GITHUB ANIMADO */
+
 .github-tooltip {
     position: relative;
     display: flex;
@@ -371,81 +382,8 @@ img {
     transform: translate(-50%, 0);
 }
 
-/* =========================================
-   PARTE INFERIOR DO RODAPÉ
-========================================= */
-
-.footer-bottom {
-    width: 100%;
-    min-height: 60px;
-    background: #08244d;
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px 25px;
-    transform: translateY(25px);
-}
-
-.footer-bottom p {
-    color: #ffffff !important;
-    margin: 0;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.footer-bottom p:last-child {
-    text-align: right;
-}
-
-.footer-bottom span {
-    display: inline-block;
-    margin-left: 4px;
-    font-size: 15px;
-}
-
-html,
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #0b2a5b !important;
-}
-
-footer.footer {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #0b2a5b !important;
-}
-
-footer.footer .footer-main {
-    background: #0b2a5b !important;
-}
-
-footer.footer .footer-bottom {
-    display: flex !important;
-    width: 100% !important;
-    min-height: 60px !important;
-    padding: 15px 5% !important;
-    background: #08244d !important;
-    color: white !important;
-}
-
-footer.footer .footer-bottom p {
-    color: white !important;
-}
-
-/* REDES SOCIAIS */
-.social-links {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    margin-top: 20px;
-}
-
 /* LINKEDIN ANIMADO */
+
 .linkedin-tooltip {
     position: relative;
 }
@@ -493,10 +431,85 @@ footer.footer .footer-bottom p {
     transform: translate(-50%, 0);
 }
 
-/* BANNER PRINCIPAL */
+/* PARTE INFERIOR DO RODAPÉ */
+
+.footer-bottom {
+    width: 100%;
+    min-height: 45px;
+    background: #08244d;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    transform: none;
+}
+
+.footer-bottom p {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.footer-bottom p:last-child {
+    text-align: right;
+}
+
+.footer-bottom span {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+/* AJUSTES DO RODAPÉ */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Não forçar o fundo azul em todas as páginas */
+
+body {
+    background: var(--white);
+}
+
+footer.footer {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #0b2a5b !important;
+}
+
+footer.footer .footer-main {
+    background: #0b2a5b !important;
+}
+
+footer.footer .footer-bottom {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 45px !important;
+    padding: 8px 5% !important;
+    background: #08244d !important;
+    color: white !important;
+    transform: none !important;
+}
+
+footer.footer .footer-bottom p {
+    color: white !important;
+}
+
+/* =========================================
+   BANNER PRINCIPAL
+========================================= */
+
 .hero {
     width: 100%;
-    min-height: 540px;
+    min-height: 650px;
     background: whitesmoke;
     display: flex;
     align-items: center;
@@ -509,9 +522,9 @@ footer.footer .footer-bottom p {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 55px;
-    padding-top: 65px;
-    padding-bottom: 65px;
-    min-height: 540px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    min-height: 650px;
 }
 
 .hero-text {
@@ -585,6 +598,7 @@ footer.footer .footer-bottom p {
 }
 
 /* EFEITO DECORATIVO ATRÁS DA IMAGEM */
+
 .hero-image::before {
     content: "";
     position: absolute;
@@ -604,6 +618,7 @@ footer.footer .footer-bottom p {
 }
 
 /* IMAGEM DOS ESTUDANTES */
+
 .hero-image img {
     position: relative;
     z-index: 1;
@@ -622,8 +637,8 @@ footer.footer .footer-bottom p {
 
     .footer-main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding: 35px 25px;
-        gap: 30px;
+        padding: 22px 25px;
+        gap: 20px;
     }
 
     .footer-brand {
@@ -692,8 +707,8 @@ footer.footer .footer-bottom p {
 
     .footer-main {
         grid-template-columns: minmax(0, 1fr);
-        gap: 25px;
-        padding: 30px 22px;
+        gap: 20px;
+        padding: 22px;
     }
 
     .footer-brand p {
@@ -705,15 +720,15 @@ footer.footer .footer-bottom p {
     }
 
     .footer-logo {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .footer-bottom {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 18px 15px;
-        gap: 8px;
+        padding: 10px 15px;
+        gap: 6px;
     }
 
     .footer-bottom p {
@@ -758,7 +773,7 @@ footer.footer .footer-bottom p {
 
     .footer-main {
         grid-template-columns: 1fr;
-        padding: 30px 20px;
+        padding: 20px;
     }
 
     .footer-bottom p {
@@ -773,6 +788,7 @@ footer.footer .footer-bottom p {
 @media (min-width: 1024px) and (max-width: 1366px) {
 
     /* CABEÇALHO */
+
     .navbar {
         gap: 18px;
     }
@@ -786,6 +802,7 @@ footer.footer .footer-bottom p {
     }
 
     /* BANNER */
+
     .hero-content {
         grid-template-columns: 1fr 1fr;
         gap: 35px;
@@ -803,24 +820,24 @@ footer.footer .footer-bottom p {
 
     .hero-image {
         height: 340px;
-        transform: translate(15%, 50%);
+        transform: translate(40%, 50%);
     }
 
     /* RODAPÉ */
+
     .footer-main {
         grid-template-columns: 1.5fr 1fr 0.8fr 1fr;
         gap: 20px;
-        padding: 35px 25px;
+        padding: 22px 25px;
     }
 
     .footer-logo {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .footer-column {
         padding-left: 15px;
     }
-
 }
 
 /* =========================================
@@ -830,6 +847,7 @@ footer.footer .footer-bottom p {
 @media (min-width: 1025px) and (max-width: 1600px) {
 
     /* CABEÇALHO */
+
     .navbar {
         gap: 15px;
     }
@@ -847,6 +865,7 @@ footer.footer .footer-bottom p {
     }
 
     /* BANNER */
+
     .hero {
         min-height: 500px;
     }
@@ -872,29 +891,29 @@ footer.footer .footer-bottom p {
     }
 
     /* RODAPÉ */
+
     .footer-main {
         grid-template-columns: 1.5fr 1fr 0.8fr 1fr;
-        gap: 22px;
-        padding: 35px 30px;
+        gap: 20px;
+        padding: 22px 30px;
     }
 
     .footer-logo {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .footer-column {
         padding-left: 18px;
     }
-
 }
 
 /* ESCONDE SEÇÕES QUE AINDA NÃO POSSUEM CONTEÚDO */
+
 #categorias,
 #vagas,
 #cadastro {
     display: none;
 }
-
 
 /*
 =========================================
@@ -1115,7 +1134,7 @@ footer.footer .footer-bottom p {
     color: #38b6ff !important;
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE - COMO FUNCIONA */
 
 @media (max-width: 900px) {
     .steps-grid {

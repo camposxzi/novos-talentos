@@ -1,0 +1,177 @@
+
+html,
+body {
+    background: #FFFFFF !important;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.pagina-talentos {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 65px 20px 85px;
+}
+
+/* APRESENTAÇÃO */
+.talentos-intro {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.talentos-intro h1 {
+    color: #102A43;
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.talentos-intro p {
+    color: #64748B;
+    font-size: 16px;
+}
+
+/* GRADE DE CARDS */
+.lista-talentos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+/* CARD */
+.card-talento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 30px 25px;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(16, 42, 67, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-talento:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(16, 42, 67, 0.12);
+}
+
+/* FOTO */
+.foto-talento {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid #E2E8F0;
+}
+
+/* NOME */
+.card-talento h2 {
+    color: #102A43;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+/* FORMAÇÃO */
+.formacao {
+    color: #18A999;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* LOCALIZAÇÃO */
+.localizacao {
+    color: #64748B;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* DESCRIÇÃO */
+.descricao {
+    color: #64748B;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 15px;
+    overflow-wrap: anywhere;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: 67px;
+}
+
+/* BOTÃO */
+.botao-perfil {
+    display: block;
+    width: 100%;
+    background: #102A43;
+    color: #FFFFFF;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: auto;
+    transition: 0.3s;
+}
+
+.botao-perfil:hover {
+    background: #18A999;
+}
+
+/* LINK LINKEDIN */
+.link-linkedin {
+    display: inline-block;
+    color: #0A66C2;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+/* ESTADO VAZIO */
+.sem-talentos {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+}
+
+.sem-talentos h2 {
+    color: #102A43;
+    font-size: 20px;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+    .lista-talentos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    .pagina-talentos {
+        padding: 45px 18px;
+    }
+
+    .talentos-intro {
+        margin-bottom: 30px;
+    }
+
+    .lista-talentos {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .card-talento {
+        padding: 28px 22px;
+    }
+}

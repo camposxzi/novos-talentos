@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+$usuarioLogado = isset($_SESSION['usuario_id']);
+$nomeUsuario = $_SESSION['nome_usuario'] ?? '';
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -22,7 +30,7 @@
 
         <div class="container navbar">
 
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
 
                 <span class="logo-icon">
                     <img src="img/logo-trans.png" alt="Logo Novos Talentos">
@@ -34,24 +42,39 @@
 
             </a>
 
-            <nav class="nav-links" id="navLinks">
 
-                <a href="#inicio">Início</a>
-                <a href="#categorias">Talentos</a>
-                <a href="como-funciona.html">Como Funciona</a>
+<nav class="nav-links" id="navLinks">
 
-                <a href="#cadastro" class="button">
-                    Cadastre-se
-                </a>
+    <a href="index.php">Início</a>
+    <a href="talentos.php">Talentos</a>
+    <a href="como-funciona.html">Como Funciona</a>
 
-            </nav>
+    <?php if ($usuarioLogado): ?>
 
-        </div>
+        <a href="criar-perfil.php" class="button">
+            Criar perfil
+        </a>
 
-    </header>
+        <a href="sair.php" class="button">
+            Sair
+        </a>
+
+    <?php else: ?>
+
+        <a href="cadastro.php" class="button">
+            Cadastre-se
+        </a>
+
+    <?php endif; ?>
+
+</nav>
+
+    </div>
+
+</header>
 
 
-    <!-- =================================
+<!-- =================================
          CONTEÚDO PRINCIPAL
     ================================== -->
 
@@ -77,9 +100,19 @@
                         em um único lugar.
                     </p>
 
-                    <a href="#categorias" class="hero-btn">
-                        Começar agora →
-                    </a>
+<?php if ($usuarioLogado): ?>
+
+    <a href="criar-perfil.php" class="hero-btn">
+        Criar meu perfil →
+    </a>
+
+<?php else: ?>
+
+    <a href="cadastro.php" class="hero-btn">
+        Começar agora →
+    </a>
+
+<?php endif; ?>
 
                 </div>
 
@@ -167,9 +200,9 @@
                 <h3>Links</h3>
 
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#categorias">Talentos</a></li>
-                    <li><a href="#vagas">Como funciona</a></li>
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="talentos.php">Talentos</a></li>
+                    <li><a href="como-funciona.html">Como funciona</a></li>
                 </ul>
 
             </div>

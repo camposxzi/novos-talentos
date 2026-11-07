@@ -1,0 +1,274 @@
+
+/* ==========================================
+   PÁGINA DE PERFIL - NOVOS TALENTOS
+========================================== */
+
+.pagina-perfil {
+    background: #F3F6FA;
+    min-height: 100vh;
+    padding: 55px 20px 80px;
+}
+
+.container-perfil {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+/* VOLTAR */
+
+.voltar-talentos {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #64748B;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    transition: 0.2s;
+}
+
+.voltar-talentos:hover {
+    color: #18A999;
+}
+
+.voltar-talentos span {
+    font-size: 20px;
+}
+
+/* CABEÇALHO DO PERFIL */
+
+.perfil-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 45px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.05);
+    margin-bottom: 25px;
+}
+
+.perfil-foto-container {
+    flex-shrink: 0;
+}
+
+.foto-perfil-grande {
+    display: block;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 5px solid #F3F6FA;
+    box-shadow: 0 0 0 2px #18A999;
+}
+
+.perfil-identificacao {
+    min-width: 0;
+}
+
+.perfil-etiqueta {
+    display: inline-block;
+    color: #18A999;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.perfil-identificacao h1 {
+    color: #102A43;
+    font-size: clamp(27px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+}
+
+.perfil-formacao {
+    color: #243447;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.perfil-area {
+    display: inline-block;
+    color: #18A999;
+    background: rgba(24, 169, 153, 0.09);
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.perfil-localizacao {
+    color: #64748B;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* LINKS */
+
+.perfil-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.perfil-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 17px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.link-linkedin {
+    color: #FFFFFF;
+    background: #0A66C2;
+}
+
+.link-linkedin:hover {
+    background: #084D91;
+    transform: translateY(-2px);
+}
+
+.link-github {
+    color: #FFFFFF;
+    background: #24292F;
+}
+
+.link-github:hover {
+    background: #102A43;
+    transform: translateY(-2px);
+}
+
+/* SEÇÕES */
+
+.perfil-secao {
+    padding: 30px 35px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 13px;
+    box-shadow: 0 5px 20px rgba(16, 42, 67, 0.035);
+}
+
+.perfil-secao-titulo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.perfil-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    color: #18A999;
+    background: rgba(24, 169, 153, 0.10);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.perfil-secao h2 {
+    color: #102A43;
+    font-size: 19px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.perfil-secao > p {
+    color: #64748B;
+    font-size: 15px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+/* RODAPÉ */
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    .pagina-perfil {
+        padding: 35px 15px 55px;
+    }
+
+    .perfil-cabecalho {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+        padding: 35px 22px;
+    }
+
+    .foto-perfil-grande {
+        width: 145px;
+        height: 145px;
+    }
+
+    .perfil-links {
+        justify-content: center;
+    }
+
+    .perfil-secao {
+        padding: 25px 22px;
+    }
+
+    .perfil-secao h2 {
+        font-size: 17px;
+    }
+
+    .perfil-secao > p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .perfil-cabecalho {
+        padding: 28px 17px;
+    }
+
+    .perfil-identificacao h1 {
+        font-size: 26px;
+    }
+
+    .perfil-secao {
+        padding: 22px 17px;
+    }
+
+    .perfil-links {
+        flex-direction: column;
+    }
+
+    .perfil-links a {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
