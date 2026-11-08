@@ -36,7 +36,7 @@
     font-size: 20px;
 }
 
-/* CABEÇALHO DO PERFIL */
+/* CABEÇALHO */
 
 .perfil-cabecalho {
     display: flex;
@@ -111,7 +111,7 @@
     margin-top: 10px;
 }
 
-/* LINKS */
+/* LINKS PROFISSIONAIS */
 
 .perfil-links {
     display: flex;
@@ -150,7 +150,93 @@
     transform: translateY(-2px);
 }
 
-/* SEÇÕES */
+/* ==========================================
+   AÇÕES DO PERFIL
+========================================== */
+
+.acoes-perfil {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.form-excluir-perfil {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+/* ESTILO COMUM */
+
+.acao-editar,
+.form-excluir-perfil .acao-excluir {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 155px;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease,
+                color 0.2s ease, transform 0.2s ease;
+}
+
+/* EDITAR */
+
+.acao-editar {
+    background: #102A43;
+    color: #FFFFFF;
+    border: 1px solid #102A43;
+}
+
+.acao-editar:hover {
+    background: #243F59;
+    color: #FFFFFF;
+    border-color: #243F59;
+    transform: translateY(-2px);
+}
+
+/* EXCLUIR */
+
+.form-excluir-perfil .acao-excluir {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #FFF1F2;
+    background-image: none;
+    color: #BE123C;
+    border: 1px solid #FECDD3;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.form-excluir-perfil .acao-excluir:hover {
+    background: #FFE4E6;
+    color: #9F1239;
+    border-color: #FDA4AF;
+    transform: translateY(-2px);
+}
+
+.icone-acao {
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* ==========================================
+   SEÇÕES DO PERFIL
+========================================== */
 
 .perfil-secao {
     padding: 30px 35px;
@@ -207,7 +293,9 @@
     gap: 12px;
 }
 
-/* RESPONSIVIDADE */
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
 
 @media (max-width: 768px) {
 
@@ -229,6 +317,10 @@
     }
 
     .perfil-links {
+        justify-content: center;
+    }
+
+    .acoes-perfil {
         justify-content: center;
     }
 
@@ -267,8 +359,45 @@
         justify-content: center;
     }
 
+    .acoes-perfil {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .form-excluir-perfil {
+        width: 100%;
+    }
+
+    .acao-editar,
+    .form-excluir-perfil .acao-excluir {
+        width: 100%;
+    }
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* BOTÃO EXCLUIR - ESTILO FORÇADO */
+
+body .pagina-perfil .acoes-perfil .form-excluir-perfil button.acao-excluir {
+    background: #FFF1F2 !important;
+    background-color: #FFF1F2 !important;
+    background-image: none !important;
+    color: #BE123C !important;
+    border: 1px solid #FDA4AF !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    cursor: pointer !important;
+}
+
+body .pagina-perfil .acoes-perfil .form-excluir-perfil button.acao-excluir:hover {
+    background: #BE123C !important;
+    background-color: #BE123C !important;
+    color: #FFFFFF !important;
+    border-color: #BE123C !important;
 }

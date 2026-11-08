@@ -1,5 +1,9 @@
 
 <?php
+session_start();
+
+$usuarioLogado = isset($_SESSION['usuario_id']);
+
 require_once __DIR__ . '/config/database.php';
 
 $sql = "
@@ -55,12 +59,22 @@ function escapar($valor) {
             </a>
 
             <nav class="nav-links" id="navLinks">
-                <a href="index.php">Início</a>
-                <a href="talentos.php" class="active">Talentos</a>
-                <a href="como-funciona.html">Como Funciona</a>
-                <a href="cadastro.php" class="button">Cadastre-se</a>
-            </nav>
+    <a href="index.php">Início</a>
+    <a href="talentos.php" class="active">Talentos</a>
+    <a href="como-funciona.php">Como Funciona</a>
 
+    <?php if ($usuarioLogado): ?>
+
+        <a href="criar-perfil.php" class="button">Criar perfil</a>
+        <a href="sair.php" class="button">Sair</a>
+
+    <?php else: ?>
+
+        <a href="cadastro.php" class="button">Cadastre-se</a>
+
+    <?php endif; ?>
+
+</nav>
         </div>
     </header>
 
@@ -165,7 +179,7 @@ function escapar($valor) {
                 <ul>
                     <li><a href="index.php">Início</a></li>
                     <li><a href="talentos.php">Talentos</a></li>
-                    <li><a href="como-funciona.html">Como funciona</a></li>
+                    <li><a href="como-funciona.php">Como funciona</a></li>
                 </ul>
             </div>
 

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -33,12 +32,14 @@ if (!$talento) {
 }
 
 // Protege os textos exibidos na página
-function escapar($valor) {
+function escapar($valor)
+{
     return htmlspecialchars($valor ?? '', ENT_QUOTES, 'UTF-8');
 }
 
 // Verifica links externos
-function linkSeguro($url) {
+function linkSeguro($url)
+{
     if (!$url || !filter_var($url, FILTER_VALIDATE_URL)) {
         return '';
     }
@@ -48,14 +49,26 @@ function linkSeguro($url) {
     return in_array($esquema, ['http', 'https'], true) ? $url : '';
 }
 
+// Foto do perfil
 $foto = !empty($talento['foto_perfil'])
     ? $talento['foto_perfil']
     : 'img/perfil-padrao.png';
 
+// Links profissionais
 $linkedin = linkSeguro($talento['linkedin'] ?? '');
 $github = linkSeguro($talento['github'] ?? '');
 
+// Verifica usuário conectado
 $usuarioLogado = isset($_SESSION['usuario_id']);
+
+// Verifica se o perfil pertence ao usuário conectado
+$ehDono = $usuarioLogado &&
+    (int) $_SESSION['usuario_id'] === (int) $talento['usuario_id'];
+
+// Cria token para as ações do perfil
+if ($ehDono && empty($_SESSION['perfil_csrf_token'])) {
+    $_SESSION['perfil_csrf_token'] = bin2hex(random_bytes(32));
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +78,14 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Conheça o perfil profissional de <?= escapar($talento['nome_completo']) ?> no Novos Talentos.">
+    <meta
+        name="description"
+        content="Conheça o perfil profissional de <?= escapar($talento['nome_completo']) ?> no Novos Talentos.">
 
     <title><?= escapar($talento['nome_completo']) ?> | Novos Talentos</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/perfil.css?v=3">
 </head>
 
 <body>
@@ -97,7 +112,7 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
 
                 <a href="index.php">Início</a>
                 <a href="talentos.php">Talentos</a>
-                <a href="como-funciona.html">Como Funciona</a>
+                <a href="como-funciona.php">Como Funciona</a>
 
                 <?php if ($usuarioLogado): ?>
 
@@ -144,8 +159,7 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
                     <img
                         src="<?= escapar($foto) ?>"
                         alt="Foto de <?= escapar($talento['nome_completo']) ?>"
-                        class="foto-perfil-grande"
-                    >
+                        class="foto-perfil-grande">
 
                 </div>
 
@@ -164,9 +178,11 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
                     </p>
 
                     <?php if (!empty($talento['area_interesse'])): ?>
+
                         <p class="perfil-area">
                             <?= escapar($talento['area_interesse']) ?>
                         </p>
+
                     <?php endif; ?>
 
                     <?php if (!empty($talento['cidade']) || !empty($talento['estado'])): ?>
@@ -193,31 +209,90 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
                         <div class="perfil-links">
 
                             <?php if ($linkedin): ?>
+
                                 <a
                                     href="<?= escapar($linkedin) ?>"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="link-linkedin"
-                                >
+                                    class="link-linkedin">
                                     LinkedIn ↗
                                 </a>
+
                             <?php endif; ?>
 
                             <?php if ($github): ?>
+
                                 <a
                                     href="<?= escapar($github) ?>"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="link-github"
-                                >
+                                    class="link-github">
                                     GitHub ↗
                                 </a>
+
                             <?php endif; ?>
 
                         </div>
 
                     <?php endif; ?>
 
+
+                    <!-- AÇÕES DO DONO DO PERFIL -->
+
+
+                    <!-- AÇÕES DO DONO DO PERFIL -->
+
+                    <?php if ($ehDono): ?>
+
+                        <div class="acoes-perfil">
+
+                            <a
+                                href="editar-perfil.php?id=<?= (int) $talento['id'] ?>"
+                                class="acao-editar">
+
+                                <span class="icone-acao">✎</span>
+                                <span>Editar perfil</span>
+
+                            </a>
+
+                            <form
+                                method="POST"
+                                action="excluir-meu-perfil.php"
+                                class="form-excluir-perfil"
+                                onsubmit="return confirm('Tem certeza de que deseja excluir seu perfil? Essa ação não poderá ser desfeita.');">
+
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?= (int) $talento['id'] ?>">
+
+                                <input
+                                    type="hidden"
+                                    name="csrf_token"
+                                    value="<?= escapar($_SESSION['perfil_csrf_token']) ?>">
+
+                                <button
+                                    type="submit"
+                                    class="acao-excluir"
+                                    style="
+        background-color: #FFF1F2 !important;
+        background-image: none !important;
+        color: #BE123C !important;
+        border: 1px solid #FDA4AF !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+    ">
+
+                                    <span class="icone-acao">⌫</span>
+                                    <span>Excluir perfil</span>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    <?php endif; ?>
                 </div>
 
             </section>
@@ -311,4 +386,5 @@ $usuarioLogado = isset($_SESSION['usuario_id']);
     </footer>
 
 </body>
+
 </html>

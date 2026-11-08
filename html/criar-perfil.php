@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -158,7 +157,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 header('Location: perfil.php?id=' . $perfilId);
                 exit;
-
             } catch (PDOException $e) {
                 $erro = 'Não foi possível salvar seu perfil. Tente novamente.';
             }
@@ -166,7 +164,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function escapar($valor) {
+function escapar($valor)
+{
     return htmlspecialchars($valor ?? '', ENT_QUOTES, 'UTF-8');
 }
 ?>
@@ -186,238 +185,227 @@ function escapar($valor) {
 
 <body>
 
-<header class="header">
-    <div class="container navbar">
+    <header class="header">
+        <div class="container navbar">
 
-        <a href="index.php" class="logo">
-            <span class="logo-icon">
-                <img src="img/logo-trans.png" alt="Logo Novos Talentos">
-            </span>
+            <a href="index.php" class="logo">
+                <span class="logo-icon">
+                    <img src="img/logo-trans.png" alt="Logo Novos Talentos">
+                </span>
 
-            <span>
-                Novos <span class="logo-highlight">Talentos</span>
-            </span>
-        </a>
+                <span>
+                    Novos <span class="logo-highlight">Talentos</span>
+                </span>
+            </a>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="index.php">Início</a>
-            <a href="talentos.php">Talentos</a>
-            <a href="como-funciona.html">Como Funciona</a>
-            <a href="sair.php" class="button">Sair</a>
-        </nav>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.php">Início</a>
+                <a href="talentos.php">Talentos</a>
+                <a href="como-funciona.php">Como Funciona</a>
+                <a href="sair.php" class="button">Sair</a>
+            </nav>
 
-    </div>
-</header>
-
-<main class="pagina-criar-perfil">
-
-    <section class="formulario-perfil">
-
-        <div class="perfil-intro">
-            <span class="perfil-tag">SEU ESPAÇO PROFISSIONAL</span>
-
-            <h1>Crie seu perfil</h1>
-
-            <p>
-                Apresente suas habilidades, experiências e objetivos.
-                Mostre às empresas o seu potencial.
-            </p>
         </div>
+    </header>
 
-        <?php if ($erro): ?>
-            <div class="mensagem-erro">
-                <?= escapar($erro) ?>
+    <main class="pagina-criar-perfil">
+
+        <section class="formulario-perfil">
+
+            <div class="perfil-intro">
+                <span class="perfil-tag">SEU ESPAÇO PROFISSIONAL</span>
+
+                <h1>Crie seu perfil</h1>
+
+                <p>
+                    Apresente suas habilidades, experiências e objetivos.
+                    Mostre às empresas o seu potencial.
+                </p>
             </div>
-        <?php endif; ?>
 
-        <form method="POST" enctype="multipart/form-data">
-
-            <div class="grupo-formulario">
-
-                <h2>Informações pessoais</h2>
-
-                <div class="campo">
-                    <label for="foto_perfil">Foto de perfil</label>
-                    <input
-                        type="file"
-                        id="foto_perfil"
-                        name="foto_perfil"
-                        accept="image/jpeg,image/png,image/webp"
-                    >
-                    <small>JPG, PNG ou WEBP. Tamanho máximo: 2 MB.</small>
+            <?php if ($erro): ?>
+                <div class="mensagem-erro">
+                    <?= escapar($erro) ?>
                 </div>
+            <?php endif; ?>
 
-                <div class="campo">
-                    <label for="nome_completo">Nome completo *</label>
-                    <input
-                        type="text"
-                        id="nome_completo"
-                        name="nome_completo"
-                        maxlength="150"
-                        value="<?= escapar($_POST['nome_completo'] ?? '') ?>"
-                        placeholder="Digite seu nome completo"
-                        required
-                    >
-                </div>
+            <form method="POST" enctype="multipart/form-data">
 
-                <div class="campo">
-                    <label for="formacao">Formação *</label>
-                    <input
-                        type="text"
-                        id="formacao"
-                        name="formacao"
-                        maxlength="150"
-                        value="<?= escapar($_POST['formacao'] ?? '') ?>"
-                        placeholder="Ex.: Ensino Médio, Administração..."
-                        required
-                    >
-                </div>
+                <div class="grupo-formulario">
 
-                <div class="campo">
-                    <label for="area_interesse">Área de interesse</label>
-                    <input
-                        type="text"
-                        id="area_interesse"
-                        name="area_interesse"
-                        maxlength="100"
-                        value="<?= escapar($_POST['area_interesse'] ?? '') ?>"
-                        placeholder="Ex.: Tecnologia, Marketing, Administração..."
-                    >
-                </div>
-
-                <div class="campos-duplos">
+                    <h2>Informações pessoais</h2>
 
                     <div class="campo">
-                        <label for="cidade">Cidade</label>
+                        <label for="foto_perfil">Foto de perfil</label>
+                        <input
+                            type="file"
+                            id="foto_perfil"
+                            name="foto_perfil"
+                            accept="image/jpeg,image/png,image/webp">
+                        <small>JPG, PNG ou WEBP. Tamanho máximo: 2 MB.</small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="nome_completo">Nome completo *</label>
                         <input
                             type="text"
-                            id="cidade"
-                            name="cidade"
+                            id="nome_completo"
+                            name="nome_completo"
+                            maxlength="150"
+                            value="<?= escapar($_POST['nome_completo'] ?? '') ?>"
+                            placeholder="Digite seu nome completo"
+                            required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="formacao">Formação *</label>
+                        <input
+                            type="text"
+                            id="formacao"
+                            name="formacao"
+                            maxlength="150"
+                            value="<?= escapar($_POST['formacao'] ?? '') ?>"
+                            placeholder="Ex.: Ensino Médio, Administração..."
+                            required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="area_interesse">Área de interesse</label>
+                        <input
+                            type="text"
+                            id="area_interesse"
+                            name="area_interesse"
                             maxlength="100"
-                            value="<?= escapar($_POST['cidade'] ?? '') ?>"
-                            placeholder="Sua cidade"
-                        >
+                            value="<?= escapar($_POST['area_interesse'] ?? '') ?>"
+                            placeholder="Ex.: Tecnologia, Marketing, Administração...">
+                    </div>
+
+                    <div class="campos-duplos">
+
+                        <div class="campo">
+                            <label for="cidade">Cidade</label>
+                            <input
+                                type="text"
+                                id="cidade"
+                                name="cidade"
+                                maxlength="100"
+                                value="<?= escapar($_POST['cidade'] ?? '') ?>"
+                                placeholder="Sua cidade">
+                        </div>
+
+                        <div class="campo">
+                            <label for="estado">Estado</label>
+                            <input
+                                type="text"
+                                id="estado"
+                                name="estado"
+                                maxlength="2"
+                                value="<?= escapar($_POST['estado'] ?? '') ?>"
+                                placeholder="Ex.: MG">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="grupo-formulario">
+
+                    <h2>Sobre você</h2>
+
+                    <div class="campo">
+                        <label for="sobre">Sobre mim *</label>
+                        <textarea
+                            id="sobre"
+                            name="sobre"
+                            rows="5"
+                            placeholder="Conte um pouco sobre você, seus interesses e sua trajetória..."
+                            required><?= escapar($_POST['sobre'] ?? '') ?></textarea>
                     </div>
 
                     <div class="campo">
-                        <label for="estado">Estado</label>
-                        <input
-                            type="text"
-                            id="estado"
-                            name="estado"
-                            maxlength="2"
-                            value="<?= escapar($_POST['estado'] ?? '') ?>"
-                            placeholder="Ex.: MG"
-                        >
+                        <label for="habilidades">Competências e habilidades</label>
+                        <textarea
+                            id="habilidades"
+                            name="habilidades"
+                            rows="4"
+                            placeholder="Ex.: Comunicação, trabalho em equipe, informática..."><?= escapar($_POST['habilidades'] ?? '') ?></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label for="experiencia">Experiência</label>
+                        <textarea
+                            id="experiencia"
+                            name="experiencia"
+                            rows="4"
+                            placeholder="Conte sobre suas experiências profissionais, projetos ou atividades..."><?= escapar($_POST['experiencia'] ?? '') ?></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label for="objetivo">Objetivo profissional</label>
+                        <textarea
+                            id="objetivo"
+                            name="objetivo"
+                            rows="3"
+                            placeholder="Quais são seus objetivos profissionais?"><?= escapar($_POST['objetivo'] ?? '') ?></textarea>
                     </div>
 
                 </div>
 
-            </div>
+                <div class="grupo-formulario">
 
-            <div class="grupo-formulario">
+                    <h2>Links profissionais</h2>
 
-                <h2>Sobre você</h2>
+                    <div class="campo">
+                        <label for="linkedin">LinkedIn</label>
+                        <input
+                            type="url"
+                            id="linkedin"
+                            name="linkedin"
+                            value="<?= escapar($_POST['linkedin'] ?? '') ?>"
+                            placeholder="https://www.linkedin.com/in/seu-perfil">
+                    </div>
 
-                <div class="campo">
-                    <label for="sobre">Sobre mim *</label>
-                    <textarea
-                        id="sobre"
-                        name="sobre"
-                        rows="5"
-                        placeholder="Conte um pouco sobre você, seus interesses e sua trajetória..."
-                        required
-                    ><?= escapar($_POST['sobre'] ?? '') ?></textarea>
+                    <div class="campo">
+                        <label for="github">GitHub</label>
+                        <input
+                            type="url"
+                            id="github"
+                            name="github"
+                            value="<?= escapar($_POST['github'] ?? '') ?>"
+                            placeholder="https://github.com/seu-usuario">
+                    </div>
+
                 </div>
 
-                <div class="campo">
-                    <label for="habilidades">Competências e habilidades</label>
-                    <textarea
-                        id="habilidades"
-                        name="habilidades"
-                        rows="4"
-                        placeholder="Ex.: Comunicação, trabalho em equipe, informática..."
-                    ><?= escapar($_POST['habilidades'] ?? '') ?></textarea>
+                <div class="acoes-formulario">
+
+                    <a href="index.php" class="botao-cancelar">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="botao-salvar">
+                        Salvar meu perfil
+                    </button>
+
                 </div>
 
-                <div class="campo">
-                    <label for="experiencia">Experiência</label>
-                    <textarea
-                        id="experiencia"
-                        name="experiencia"
-                        rows="4"
-                        placeholder="Conte sobre suas experiências profissionais, projetos ou atividades..."
-                    ><?= escapar($_POST['experiencia'] ?? '') ?></textarea>
-                </div>
+                <p class="campos-obrigatorios">
+                    * Campos obrigatórios
+                </p>
 
-                <div class="campo">
-                    <label for="objetivo">Objetivo profissional</label>
-                    <textarea
-                        id="objetivo"
-                        name="objetivo"
-                        rows="3"
-                        placeholder="Quais são seus objetivos profissionais?"
-                    ><?= escapar($_POST['objetivo'] ?? '') ?></textarea>
-                </div>
+            </form>
 
-            </div>
+        </section>
 
-            <div class="grupo-formulario">
+    </main>
 
-                <h2>Links profissionais</h2>
-
-                <div class="campo">
-                    <label for="linkedin">LinkedIn</label>
-                    <input
-                        type="url"
-                        id="linkedin"
-                        name="linkedin"
-                        value="<?= escapar($_POST['linkedin'] ?? '') ?>"
-                        placeholder="https://www.linkedin.com/in/seu-perfil"
-                    >
-                </div>
-
-                <div class="campo">
-                    <label for="github">GitHub</label>
-                    <input
-                        type="url"
-                        id="github"
-                        name="github"
-                        value="<?= escapar($_POST['github'] ?? '') ?>"
-                        placeholder="https://github.com/seu-usuario"
-                    >
-                </div>
-
-            </div>
-
-            <div class="acoes-formulario">
-
-                <a href="index.php" class="botao-cancelar">
-                    Cancelar
-                </a>
-
-                <button type="submit" class="botao-salvar">
-                    Salvar meu perfil
-                </button>
-
-            </div>
-
-            <p class="campos-obrigatorios">
-                * Campos obrigatórios
-            </p>
-
-        </form>
-
-    </section>
-
-</main>
-
-<footer class="footer">
-    <div class="footer-bottom">
-        <p>© 2026 Novos Talentos. Todos os direitos reservados.</p>
-        <p>Desenvolvido por Gabriel Campos</p>
-    </div>
-</footer>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>© 2026 Novos Talentos. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Gabriel Campos</p>
+        </div>
+    </footer>
 
 </body>
+
 </html>

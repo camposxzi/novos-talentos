@@ -43,38 +43,38 @@ $nomeUsuario = $_SESSION['nome_usuario'] ?? '';
             </a>
 
 
-<nav class="nav-links" id="navLinks">
+            <nav class="nav-links" id="navLinks">
 
-    <a href="index.php">Início</a>
-    <a href="talentos.php">Talentos</a>
-    <a href="como-funciona.html">Como Funciona</a>
+                <a href="index.php">Início</a>
+                <a href="talentos.php">Talentos</a>
+                <a href="como-funciona.php">Como Funciona</a>
 
-    <?php if ($usuarioLogado): ?>
+                <?php if ($usuarioLogado): ?>
 
-        <a href="criar-perfil.php" class="button">
-            Criar perfil
-        </a>
+                    <a href="criar-perfil.php" class="button">
+                        Criar perfil
+                    </a>
 
-        <a href="sair.php" class="button">
-            Sair
-        </a>
+                    <a href="sair.php" class="button">
+                        Sair
+                    </a>
 
-    <?php else: ?>
+                <?php else: ?>
 
-        <a href="cadastro.php" class="button">
-            Cadastre-se
-        </a>
+                    <a href="cadastro.php" class="button">
+                        Cadastre-se
+                    </a>
 
-    <?php endif; ?>
+                <?php endif; ?>
 
-</nav>
+            </nav>
 
-    </div>
+        </div>
 
-</header>
+    </header>
 
 
-<!-- =================================
+    <!-- =================================
          CONTEÚDO PRINCIPAL
     ================================== -->
 
@@ -100,19 +100,19 @@ $nomeUsuario = $_SESSION['nome_usuario'] ?? '';
                         em um único lugar.
                     </p>
 
-<?php if ($usuarioLogado): ?>
+                    <?php if ($usuarioLogado): ?>
 
-    <a href="criar-perfil.php" class="hero-btn">
-        Criar meu perfil →
-    </a>
+                        <a href="criar-perfil.php" class="hero-btn">
+                            Criar meu perfil →
+                        </a>
 
-<?php else: ?>
+                    <?php else: ?>
 
-    <a href="cadastro.php" class="hero-btn">
-        Começar agora →
-    </a>
+                        <a href="cadastro.php" class="hero-btn">
+                            Começar agora →
+                        </a>
 
-<?php endif; ?>
+                    <?php endif; ?>
 
                 </div>
 
@@ -202,7 +202,7 @@ $nomeUsuario = $_SESSION['nome_usuario'] ?? '';
                 <ul>
                     <li><a href="index.php">Início</a></li>
                     <li><a href="talentos.php">Talentos</a></li>
-                    <li><a href="como-funciona.html">Como funciona</a></li>
+                    <li><a href="como-funciona-php">Como funciona</a></li>
                 </ul>
 
             </div>

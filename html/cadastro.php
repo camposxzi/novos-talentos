@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once __DIR__ . '/config/database.php';
@@ -23,15 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$nome || !$email || !$senha || !in_array($tipo, $tiposValidos, true)) {
 
             $erro = 'Preencha todos os campos corretamente.';
-
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             $erro = 'Digite um e-mail válido.';
-
         } elseif (strlen($senha) < 8) {
 
             $erro = 'A senha deve ter pelo menos 8 caracteres.';
-
         } else {
 
             $consulta = $pdo->prepare(
@@ -43,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($consulta->fetch()) {
 
                 $erro = 'Este e-mail já está cadastrado.';
-
             } else {
 
                 $hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -102,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             header('Location: index.php');
             exit;
-
         } else {
 
             $erro = 'E-mail ou senha incorretos.';
@@ -126,119 +120,116 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-<div class="container" id="container">
+    <div class="container" id="container">
 
-    <div class="form-container cadastro-container">
+        <div class="form-container cadastro-container">
 
-        <form method="POST" action="cadastro.php">
+            <form method="POST" action="cadastro.php">
 
-            <h1>Criar conta</h1>
-            <p>Comece sua jornada com o Novos Talentos.</p>
+                <h1>Criar conta</h1>
+                <p>Comece sua jornada com o Novos Talentos.</p>
 
-            <?php if ($erro && ($_POST['acao'] ?? '') === 'cadastrar'): ?>
-                <div class="mensagem erro">
-                    <?= htmlspecialchars($erro) ?>
+                <?php if ($erro && ($_POST['acao'] ?? '') === 'cadastrar'): ?>
+                    <div class="mensagem erro">
+                        <?= htmlspecialchars($erro) ?>
+                    </div>
+                <?php endif; ?>
+
+                <input type="hidden" name="acao" value="cadastrar">
+
+                <input
+                    type="text"
+                    name="nome"
+                    placeholder="Nome completo"
+                    maxlength="80"
+                    required>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    maxlength="150"
+                    required>
+
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Senha (mínimo 8 caracteres)"
+                    minlength="8"
+                    required>
+
+                <select name="tipo_usuario" required>
+                    <option value="">Tipo de usuário</option>
+                    <option value="estudante">Estudante</option>
+                    <option value="recem_formado">Recém-formado</option>
+                </select>
+
+                <button type="submit">Cadastrar</button>
+
+            </form>
+
+        </div>
+
+        <div class="form-container login-container">
+
+            <form method="POST" action="cadastro.php">
+
+                <h1>Bem-vindo de volta!</h1>
+                <p>Entre na sua conta para continuar.</p>
+
+                <?php if ($erro && ($_POST['acao'] ?? '') === 'entrar'): ?>
+                    <div class="mensagem erro">
+                        <?= htmlspecialchars($erro) ?>
+                    </div>
+                <?php endif; ?>
+
+                <input type="hidden" name="acao" value="entrar">
+
+                <input
+                    type="email"
+                    name="email_login"
+                    placeholder="E-mail"
+                    required>
+
+                <input
+                    type="password"
+                    name="senha_login"
+                    placeholder="Senha"
+                    required>
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+        </div>
+
+        <div class="painel-container">
+
+            <div class="painel">
+
+                <div class="painel-conteudo painel-esquerdo">
+
+                    <h1>Já tem uma conta?</h1>
+
+                    <p>Entre e continue explorando novas oportunidades.</p>
+
+                    <button class="botao-transparente" id="entrar">
+                        Fazer login
+                    </button>
+
                 </div>
-            <?php endif; ?>
 
-            <input type="hidden" name="acao" value="cadastrar">
+                <div class="painel-conteudo painel-direito">
 
-            <input
-                type="text"
-                name="nome"
-                placeholder="Nome completo"
-                maxlength="80"
-                required
-            >
+                    <h1>Olá, usuário!</h1>
 
-            <input
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                maxlength="150"
-                required
-            >
+                    <p>Crie sua conta e descubra novas oportunidades para seu futuro.</p>
 
-            <input
-                type="password"
-                name="senha"
-                placeholder="Senha (mínimo 8 caracteres)"
-                minlength="8"
-                required
-            >
+                    <button class="botao-transparente" id="cadastrar">
+                        Criar conta
+                    </button>
 
-            <select name="tipo_usuario" required>
-                <option value="">Tipo de usuário</option>
-                <option value="estudante">Estudante</option>
-                <option value="recem_formado">Recém-formado</option>
-            </select>
-
-            <button type="submit">Cadastrar</button>
-
-        </form>
-
-    </div>
-
-    <div class="form-container login-container">
-
-        <form method="POST" action="cadastro.php">
-
-            <h1>Bem-vindo de volta!</h1>
-            <p>Entre na sua conta para continuar.</p>
-
-            <?php if ($erro && ($_POST['acao'] ?? '') === 'entrar'): ?>
-                <div class="mensagem erro">
-                    <?= htmlspecialchars($erro) ?>
                 </div>
-            <?php endif; ?>
-
-            <input type="hidden" name="acao" value="entrar">
-
-            <input
-                type="email"
-                name="email_login"
-                placeholder="E-mail"
-                required
-            >
-
-            <input
-                type="password"
-                name="senha_login"
-                placeholder="Senha"
-                required
-            >
-
-            <button type="submit">Entrar</button>
-
-        </form>
-
-    </div>
-
-    <div class="painel-container">
-
-        <div class="painel">
-
-            <div class="painel-conteudo painel-esquerdo">
-
-                <h1>Já tem uma conta?</h1>
-
-                <p>Entre e continue explorando novas oportunidades.</p>
-
-                <button class="botao-transparente" id="entrar">
-                    Fazer login
-                </button>
-
-            </div>
-
-            <div class="painel-conteudo painel-direito">
-
-                <h1>Olá, usuário!</h1>
-
-                <p>Crie sua conta e descubra novas oportunidades para seu futuro.</p>
-
-                <button class="botao-transparente" id="cadastrar">
-                    Criar conta
-                </button>
 
             </div>
 
@@ -246,7 +237,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
 
-</div>
-
 </body>
+
 </html>
