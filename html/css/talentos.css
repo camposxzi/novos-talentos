@@ -2,6 +2,15 @@
 html,
 body {
     background: #FFFFFF !important;
+    min-height: 100%;
+    margin: 0;
+}
+
+/* ESTRUTURA DA PÁGINA */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* CONTEÚDO PRINCIPAL */
@@ -12,6 +21,8 @@ body {
     min-height: 500px;
     margin: 0 auto;
     padding: 65px 20px 85px;
+    box-sizing: border-box;
+    flex: 1;
 }
 
 /* APRESENTAÇÃO */
@@ -38,6 +49,7 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     align-items: stretch;
+    width: 100%;
 }
 
 /* CARD */
@@ -98,12 +110,10 @@ body {
     line-height: 1.6;
     margin-top: 15px;
     overflow-wrap: anywhere;
-
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
     min-height: 67px;
 }
 
@@ -111,6 +121,7 @@ body {
 .botao-perfil {
     display: block;
     width: 100%;
+    box-sizing: border-box;
     background: #102A43;
     color: #FFFFFF;
     padding: 13px;
@@ -137,6 +148,8 @@ body {
 /* ESTADO VAZIO */
 .sem-talentos {
     grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
     text-align: center;
     padding: 50px 20px;
     background: #FFFFFF;
@@ -147,6 +160,13 @@ body {
 .sem-talentos h2 {
     color: #102A43;
     font-size: 20px;
+}
+
+/* RODAPÉ */
+.footer {
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 /* TABLETS */
